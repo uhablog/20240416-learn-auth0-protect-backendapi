@@ -7,6 +7,7 @@ import Button from '../../components/FetchDataButton.client';
 export default withPageAuthRequired(
   async function SSRPage() {
     const session = await getSession();
+    console.log(session.accessTokenScope);
     const { accessToken } = await getAccessToken();
 
     return (
