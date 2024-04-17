@@ -2,11 +2,11 @@ import React from 'react';
 import { getAccessToken, getSession, withPageAuthRequired } from '@auth0/nextjs-auth0';
 
 import Highlight from '../../components/Highlight';
+import Button from '../../components/FetchDataButton.client';
 
 export default withPageAuthRequired(
   async function SSRPage() {
     const session = await getSession();
-    console.log(session);
     const { accessToken } = await getAccessToken();
 
     return (
@@ -33,6 +33,7 @@ export default withPageAuthRequired(
             <Highlight>{JSON.stringify(accessToken, null, 2)}</Highlight>
           </div>
         </div>
+        <Button accessToken={accessToken} />
       </>
     );
   },
